@@ -1,4 +1,9 @@
 <?php
+// Hide errors
+error_reporting(0);
+ini_set('display_errors', 0);
+
+// Override default PHP configurations
 ini_set('max_execution_time',360);
 ini_set('max_memory','512M');
 
