@@ -1,2 +1,2 @@
-# Ignore mac system files
-**/.DS_Store
+# Ignore Mac DS_Store system files
+.DS_Store
