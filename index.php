@@ -39,7 +39,7 @@ ini_set('max_memory','512M');
 	   $proc = new XSLTProcessor();
 	   $proc->importStylesheet($xslDoc);
 
-	   $outdir = "";
+	   $outdir = ""; # ?
 
 	   $proc->transformToURI($xmlDoc, 'php://output');
 	   ob_flush();
