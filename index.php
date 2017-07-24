@@ -9,17 +9,17 @@ ini_set('max_memory','512M');
 
   $transformations = array(
   	"simple" => array("xslt" => "csv/simple-activity-listing.xsl",
-					"title" => "Simple activity summary",					
+					"title" => "Simple activity summary",
 					"description" => "Top-level information with a row for each aid activity. Total figures for each type of transaction. Sector codes are included as a ';' separated list. Useful for basic research.",
 					"notes" => "If an activity contains transactions in multiple currencies this will not be taken into account when transaction totals are calculated. To ensure accuracy in financial analysis use the transaction data."),
 	"full" => array("xslt" => "csv/iati-activities-xml-to-csv.xsl",
-					"title" => "Full activity data",					
+					"title" => "Full activity data",
 					"description" => "Full flattened version of each IATI Activity record - one row per activity. Where multiple values exist for a column (e.g. multiple sectors, or many transactions) these are separated by ';'.",
 					"notes" => "This data can be reshaped using a tool like Google Refine for analysis along any of it's dimensions. If an activity contains transactions in multiple currencies this will not be taken into account when transaction totals are calculated. To ensure accuracy in financial analysis use the transaction data. "),
 	"transac" => array("xslt" => "csv/iati-transactions-xml-to-csv.xsl",
-						"title" => "All transactions",					
+						"title" => "All transactions",
 						"description" => "Detailed list of all transactions, with currencies, amounts and classifications with a row for each transaction.",
-						"notes" => "")	
+						"notes" => "")
   );
 
  if($_GET['download']) {
@@ -31,7 +31,7 @@ ini_set('max_memory','512M');
 	$xmlDoc = new DOMDocument;
 	$data = file_get_contents(str_replace(' ','%20',$xml));
 	$xmlDoc->loadXML($data);
-	
+
 	if($xmlDoc->getElementsByTagName('iati-activity')->item(0)) {
 	   $xslDoc = new DOMDocument();
    	   $xslDoc->load($transformations[$_GET['format']]['xslt']);
@@ -39,15 +39,15 @@ ini_set('max_memory','512M');
 	   $proc = new XSLTProcessor();
 	   $proc->importStylesheet($xslDoc);
 
-	   $outdir = "";
+	   $outdir = ""; # ?
 
-	   $proc->transformToURI($xmlDoc, 'php://output'); 
-	   ob_flush();
+	   $proc->transformToURI($xmlDoc, 'php://output');
+	   ob_flush(); # ?
 	   exit();
 
    } else {
        $complete = 1;
-	   $error = "We could not find IATI data for the country or option you selected"; 
+	   $error = "We could not find IATI data for the country or option you selected";
    }
 }
 
@@ -55,7 +55,7 @@ ini_set('max_memory','512M');
 <html>
 	<head>
 		<title>Raw data preview and tools</title>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 	
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 		<style><!--
 		* {
 	        margin: 0;
@@ -64,7 +64,7 @@ ini_set('max_memory','512M');
 
 		p {
 			margin-bottom:1em;
-			
+
 		}
 	    body {
 	        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -79,7 +79,7 @@ ini_set('max_memory','512M');
 	        padding: 0 5px 3px 5px;
 	        margin: 0 10px 5px 10px;
 	    }
-	
+
 
 	    div {
 	        background-color: #fff;
@@ -89,11 +89,11 @@ ini_set('max_memory','512M');
 	    	-moz-border-radius: 10px;
 	    	border-radius: 10px;
 	    }
-	
+
 	ul {
 		padding-left:30px;
 	}
-	
+
 	.tool {
 		display:block;
 		clear:all;
@@ -109,33 +109,33 @@ ini_set('max_memory','512M');
 		display:block;
 		float:right;
 	}
-	
+
 	label {
 		font-weight:bold;
 	}
-	
+
 	.loading {
 		background-image:url('loading.gif');
 		background-repeat:no-repeat;
 		background-position: 370px 0px;
 	}
-	
+
 	#package_list {
 		width:400px;
 	}
-	
+
 	fieldset {
 		margin-bottom:10px;
 		padding:5px;
 	}
-	
+
 	.footnote {
 		font-size:small;
 	}
 --></style>
 
 	<script><!--
-		$(document).ready(function() { 
+		$(document).ready(function() {
 			function ckan_populate(search,offset) {
 				limit = 20;
 				if(search) { search_string = "q="+search; } else { search_string = "res_format=IATI-XML"; }
@@ -167,7 +167,7 @@ ini_set('max_memory','512M');
 				  }
 				});
 			}
-			
+
 			$("#package_list").change(function(data) {
 				if($(this).val().indexOf("loadmore") !==-1)
 				 {
@@ -186,42 +186,42 @@ ini_set('max_memory','512M');
 					    });
 				}
 			});
-			
+
 			$("legend, #iati_reg_expand ").click(function() {
 				$(this).parents("fieldset").children("div").toggle('slow');
 			});
-			
+
 			$("#download, #reset_link").click(function() {
 				$(".section").toggle('fast');
 			});
-			
+
 			$("#xml").change(function(){
 				$(".id_field").val("Custom");
 			});
-			
+
 			$("#search_index").click(function(){
 				$("#package_list").empty();
 				$("#package_list").append("<option value=''>Loading...</option>");
 				ckan_populate($("#ckan_search").val())
 			});
-						
+
 			ckan_populate('');
 		});
-	
+
 	--></script>
 	</head>
 	<body>
-	
-	<form method="get" action=".">					
+
+	<form method="get" action=".">
 		<h1 class="title">CSV Conversion Tool</h1>
 			<div class="section">
 				<h3>(1) Select the data to convert</h3>
-				
+
 				<fieldset>
 				    <legend>IATI Registry Search:</legend>
 					<div class="ckan" <?php if($_GET['xml']) { echo "style='display:none;'"; }?>>
 						<label for="ckan_search">Search: <input type="text" name="search" class="ckan_search" id="ckan_search"/></label> <input type="button" value="Search" id="search_index"><br/><br/>
-						<select name="package" id="package_list" size="10"> 
+						<select name="package" id="package_list" size="10">
 							<option value="">Loading...</option>
 						</select><br/>
 						<span class="instruction">Select an item from the list above, or narrow the selection by typing in a search query (e.g. a country or donor name).</span>
@@ -239,10 +239,10 @@ ini_set('max_memory','512M');
 
 			<div class="section">
 				<h3>(2) Select File Format</h3>
-				Select the CSV (spreadsheet) serialisation of IATI data you would prefer. 
+				Select the CSV (spreadsheet) serialisation of IATI data you would prefer.
 					<input type="hidden" name="download" value="true" />
 					<input type="hidden" name="id" value="true" class="id_field"/>
-				<?php 
+				<?php
 					if($_GET['format']) { $checked = $_GET['format']; } else {$checked = array_shift(array_keys($transformations)); }
 					foreach($transformations as $key => $transdata) {
 					echo "<div class='format'>";
@@ -258,7 +258,7 @@ ini_set('max_memory','512M');
 				<h3><a name="use">(3) Use your data</a></h3>
 				<br/>
 				<p>
-				Your file should start downloading shortly. For very large files this process could take a few minutes*. 
+				Your file should start downloading shortly. For very large files this process could take a few minutes*.
 				</p>
 				<p>
 				If you would like to download another file once this is complete, <a href="#" id="reset_link">click here</a>.
@@ -278,7 +278,7 @@ ini_set('max_memory','512M');
 				</p>
 				<h4>Troubleshooting</h4>
 				<p>
-				<i>Having difficulty opening your downloaded file?</i> Check that it has a .csv file extension and that Excel, or your spreadsheet software, is configured as the default application for this kind of file. If clicking the file will not open it, try accessing it from the File->Open menu of your spreadsheet software. 
+				<i>Having difficulty opening your downloaded file?</i> Check that it has a .csv file extension and that Excel, or your spreadsheet software, is configured as the default application for this kind of file. If clicking the file will not open it, try accessing it from the File->Open menu of your spreadsheet software.
 				</p>
 				<p>
 				<i>Need a different format?</i> Turning the rich raw IATI data files into a flat spreadsheet form means we have make a decision about what to include in the spreadsheet version. Sometimes the default choices available here might not suit your proposed use of IATI data. Get in touch via <a href="http://support.iatistandard.org" target="_blank">IATI Support</a> if you are in need of a different data format .
