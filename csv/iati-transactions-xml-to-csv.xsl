@@ -63,17 +63,17 @@
     <!-- transaction-value_currency -->
     <xsl:call-template name="add"> <xsl:with-param name="value" select="value/@currency"/> </xsl:call-template>
 
-    <!-- transaction-value_value-date - removes Z from end of ISO dates -->
-    <xsl:call-template name="add"> <xsl:with-param name="value" select="value/@value-date"/> <xsl:with-param name="remove">Z</xsl:with-param> </xsl:call-template>
-
     <!-- transaction-type -->
-    <xsl:call-template name="add"> <xsl:with-param name="value" select="transaction-type"/> </xsl:call-template>
+    <xsl:call-template name="add"> <xsl:with-param name="value" select="transaction-type/@code"/> </xsl:call-template>
 
     <!-- transaction-date -->
     <xsl:call-template name="add"> <xsl:with-param name="value" select="transaction-date"/> </xsl:call-template>
 
     <!-- transaction-date_iso-date - removes Z from end of ISO dates -->
     <xsl:call-template name="add"> <xsl:with-param name="value" select="transaction-date/@iso-date"/> <xsl:with-param name="remove">Z</xsl:with-param> </xsl:call-template>
+
+    <!-- transaction-value_value-date - removes Z from end of ISO dates -->
+    <xsl:call-template name="add"> <xsl:with-param name="value" select="value/@value-date"/> <xsl:with-param name="remove">Z</xsl:with-param> </xsl:call-template>
 
 
     <!-- provider-org_ref -->

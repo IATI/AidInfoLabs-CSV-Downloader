@@ -287,16 +287,14 @@ ini_set('max_memory','512M');
 			</div>
 	<hr/>
 	<small>Developed by <a href="http://www.practicalparticipation.co.uk" target="_blank">Practical Participation</a> for <a href="http://www.aidinfolabs.org" target="_blank">aidinfo labs</a> using <a href="https://github.com/aidinfolabs/IATI-XSLT/" target="_blank">XSLT</a> based on work by Rob McKinnon. It works with valid activity data files prepared using the <a href="http://www.iatistandard.org" target="_blank">International Aid Transparency Initiative standard</a>. <a href="https://www.aidtransparency.net/privacy-policy">Privacy Policy</a></small>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110230511-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-45255890-1', 'aidinfolabs.org');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-110230511-2', {'anonymize_ip': true});
 </script>
 	</body>
 </html>
