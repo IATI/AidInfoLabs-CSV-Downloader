@@ -286,7 +286,7 @@ ini_set('max_memory','512M');
 				<span class="footnote">*There are a few IATI XML files that are too large to convert with this tool. For help with these please contact IATI support explaining how you plan to use them for advice on the best approaches to convert this data.</span>
 			</div>
 	<hr/>
-	<small>Developed by <a href="http://www.practicalparticipation.co.uk" target="_blank">Practical Participation</a> for <a href="http://www.aidinfolabs.org" target="_blank">aidinfo labs</a> using <a href="https://github.com/aidinfolabs/IATI-XSLT/" target="_blank">XSLT</a> based on work by Rob McKinnon.</small> It works with valid activity data files prepared using the <a href="http://www.iatistandard.org" target="_blank">International Aid Transparency Initiative standard</a>.
+	<small>Developed by <a href="http://www.practicalparticipation.co.uk" target="_blank">Practical Participation</a> for <a href="http://www.aidinfolabs.org" target="_blank">aidinfo labs</a> using <a href="https://github.com/aidinfolabs/IATI-XSLT/" target="_blank">XSLT</a> based on work by Rob McKinnon. It works with valid activity data files prepared using the <a href="http://www.iatistandard.org" target="_blank">International Aid Transparency Initiative standard</a>. <a href="https://www.aidtransparency.net/privacy-policy">Privacy Policy</a></small>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110230511-2"></script>
 <script>
@@ -294,7 +294,7 @@ ini_set('max_memory','512M');
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-110230511-2');
+  gtag('config', 'UA-110230511-2', {'anonymize_ip': true});
 </script>
 	</body>
 </html>
