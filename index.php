@@ -239,7 +239,7 @@ ini_set('max_memory','512M');
 
 	<form method="get" action=".">
 		<h1 class="title">CSV Conversion Tool</h1>
-			<p class="alert alert-warning"><strong>Notice:</strong> The CSV Conversion Tool is deprecated and will be removed 16 December 2022. <a href="https://cdn.iatistandard.org/prod-iati-website/documents/CSV_Conversion_Deprecation_Guide.pdf">Announcement</a></p>
+			<p class="alert alert-warning"><strong>Notice:</strong> The CSV Conversion Tool is deprecated and will be removed 16 December 2022. <a href="https://cdn.iatistandard.org/prod-iati-website/documents/CSV_Conversion_Deprecation_Guide.pdf">Information on using alternative IATI tools</a></p>
 			<div class="section">
 				<h3>(1) Select the data to convert</h3>
 
