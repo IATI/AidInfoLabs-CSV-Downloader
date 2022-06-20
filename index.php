@@ -132,6 +132,31 @@ ini_set('max_memory','512M');
 	.footnote {
 		font-size:small;
 	}
+	.alert {
+		padding: 15px;
+		margin-bottom: 20px;
+		border: 1px solid transparent;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+		border-left-color: transparent;
+		border-radius: 4px;
+		text-shadow: 0 1px 0 rgba(255,255,255,.2);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.05);
+	}
+	.alert-warning {
+		color: #8a6d3b;
+		background-color: #fcf8e3;
+  		border-color: #faebcc;
+		background-image: -webkit-linear-gradient(top,#fcf8e3 0,#f8efc0 100%);
+		background-image: -o-linear-gradient(top,#fcf8e3 0,#f8efc0 100%);
+		background-image: -webkit-gradient(linear,left top,left bottom,from(#fcf8e3),to(#f8efc0));
+		background-image: linear-gradient(to bottom,#fcf8e3 0,#f8efc0 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffcf8e3', endColorstr='#fff8efc0', GradientType=0);
+		background-repeat: repeat-x;
+		border-color: #f5e79e;
+	}
 --></style>
 
 	<script><!--
@@ -214,6 +239,7 @@ ini_set('max_memory','512M');
 
 	<form method="get" action=".">
 		<h1 class="title">CSV Conversion Tool</h1>
+			<p class="alert alert-warning"><strong>Notice:</strong> The CSV Conversion Tool is deprecated and will be removed 16 December 2022. <a href="https://cdn.iatistandard.org/prod-iati-website/documents/CSV_Conversion_Deprecation_Guide.pdf">Announcement</a></p>
 			<div class="section">
 				<h3>(1) Select the data to convert</h3>
 
